@@ -1,0 +1,487 @@
+{% extends "_includes/default.njk" %}
+
+{% block title %}Minnesota Timberwolves - Know Before You Go{% endblock %}
+{% block description %}Info page welcoming back ans to Target Center.{% endblock %}
+
+{% block content %}
+<script>
+! function(e, t, a, n, g) { e[n] = e[n] || [], e[n].push({ "gtm.start": (new Date).getTime(), event: "gtm.js" }); var m = t.getElementsByTagName(a)[0],
+    r = t.createElement(a);
+  r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-WT7PQJ2", m.parentNode.insertBefore(r, m) }(window, document, "script", "dataLayer");
+</script><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT7PQJ2" height="0" width="0" style="display:none;visibility:hidden;"></iframe></noscript>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2019-20/one-pack/css.d7ac399b.css">
+<style type="text/css">
+  [x-cloak] { display: none; }
+</style>
+<main>
+  <div class="return-home text-center"><a class="color-white" href="https://www.nba.com/timberwolves/">Return to Timberwolves.com</a></div>
+  <header class="header">
+    <div class="size-md scale" title="One Pack: We're all in the together. Brought to you by the Minnesota Timberwolves, Minnesota Lynx, Iowa Wolves, and T-Wolves Gaming.">
+      <div class="border-8 border-aurora">
+        <h1 class="color-white mt-5 text-7xl text-center">Know Before You Go</h1>
+        <h3 class="color-white text-center">Steps we're taking as we welcome fans back to Target Center.</h3>
+      </div>
+
+    </div>
+  </header>
+  <nav class="nav" 
+    x-data="nav()"
+    x-spread="scroll"
+    >
+    <ul class="nav__menu">
+      <template x-for="item in navitems" :key="item.id">
+        <li class="nav__item">
+          <a class="nav__link font-bold"
+            :class="{ '--active' : atSection===item.id }"  
+            x-bind:href="`#${item.id}`"
+            @click.prevent="atSection = item.id; smoothscroll(item, $el)">
+            <span x-text="item.title"></span>
+          </a>
+        </li>
+      </template>
+
+    </ul>
+  </nav>
+  <section class="section bg-white color-midnight" id="gameday" x-data="gameday()" x-init="modal = gameday[0];" @keydown.escape.window="showModal = false" x-cloak>
+    <div class="size-lg margin-auto">
+      <div class="text-center">
+        <h2>What to Expect on Game Day</h2>
+      </div>
+      <div class="card-container">
+        <template x-for="item in gameday" :key="item.title">
+          <div class="card">
+            <div class="card__image">
+              <i 
+                x-bind:class="`${item.icon}`"
+                aria-hidden="true"></i>
+            </div>
+            <div class="card__title" x-text="item.title"></div>
+            <p class="card__description" x-html="item.note"></p>
+            <template x-if="item.cta && !item.modal">
+              <a 
+                class="card__button" 
+                x-bind:href="item.link"
+                rel="'noopener noreferrer'"
+                target="__blank"
+                x-text="item.cta"></a>
+            </template>
+            <template x-if="item.cta && item.modal">
+              <a 
+              class="card__button" 
+              nohref
+              @click="$dispatch('modal', item)" x-text="item.cta"></a>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="overflow-auto fixed inset-0 z-10 flex items-center justify-center" style="background-color: rgba(0,0,0,0.5)" @modal.window="console.log('dispatched'), showModal = true, modal = $event.detail" x-show="showModal">
+      <!--Dialog-->
+      <div class="bg-white w-11/12 md:max-w-xl mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 mt-16" x-transition:enter-end="opacity-100 mt-0" x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+          <!--Title-->
+            <div class="flex justify-between items-center pb-3">
+              <p class="text-2xl font-bold" x-text="modal.title"></p>
+              <div class="cursor-pointer z-50" @click="showModal = false">
+                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                  <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- content -->
+            <p x-html="modal.modalInfo"></p>
+
+            <!--Footer-->
+            <div class="flex justify-end pt-2">
+              <button class="modal-close px-4 bg-lake-light p-3 rounded-lg text-lake hover:bg-lake-light-interact" @click="showModal = false">Close</button>
+            </div>
+
+      </div>
+      <!--/Dialog -->
+    </div><!-- /Overlay -->
+  </section>
+  <section class="section bg-lake text-white" id="mayo">
+    <div class="resource size-lg margin-auto md:hidden">
+      <div class="resource__logo lined">
+        <img alt="Mayo Clinic" src="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2019-20/one-pack/mayo-clinic-logo.ce7204eb.svg">
+      </div>
+    </div>
+    <div class="callout size-lg margin-auto">
+      <div class="callout__image">
+        <img class="scale" alt="Mayo Clinic" src="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2019-20/one-pack/mayo-clinic-logo.ce7204eb.svg">
+      </div>
+      <div class="callout__text">
+        <h2 class="color-white callout__title">The Latest Information on COVID-19</h2>
+        <p class="callout__description">Mayo Clinic has the latest resources and information related to COVID-19 and vaccine science. Open the link below to learn more.</p>
+        <a class="button bg-white color-lake bg-hover-lake-light" href="https://www.mayoclinic.org/coronavirus-covid-19?utm_source=Landing%20Page&utm_medium=Wolves%20email&utm_campaign=Arena%20Safety%20Email" target="_blank" rel="noopener noreferrer">Get Informed</a>
+      </div>
+    </div>
+  </section>
+  {# <section class="section bg-lake color-white" id="faq">
+    <div class="size-lg margin-auto" x-data="faq()">
+      <div class="text-center">
+        <h2 class="color-white">FAQ</h2>
+      </div>
+      <div class="leading-loose text-lg mt-6">
+        <template x-for="faq in faqs" :key="faq.question">
+          <div>
+            <button
+              class="bg-midnight w-full font-bold border-b border-gray-400 p-4 flex justify-between items-center text-left"
+              @click="faq.isOpen = !faq.isOpen"
+            >
+              <div x-text="faq.question"></div>
+              <svg x-show="!faq.isOpen" class="fill-current" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>
+              <svg x-show="faq.isOpen" class="fill-current" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm4-8a1 1 0 01-1 1H9a1 1 0 010-2h6a1 1 0 011 1z"/></svg>
+            </button>
+            <div
+              class="color-grey-dark bg-white text-lg overflow-hidden transition-all duration-500"
+              x-ref="faqText"
+              x-bind:style="faq.isOpen ? `max-height: ${$refs.faqText.scrollHeight}px` : `max-height: 0px`"
+              x-transition:enter="transition-all duration-500"
+              x-transition:enter-start="max-h-0"
+              x-transition:enter-end="max-h-full"
+              x-transition:leave="transition-all duration-500"
+              x-transition:leave-start="max-h-full"
+              x-transition:leave-end="max-h-0"
+            ><span class="block p-5" x-text="faq.answer"></span></div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section> #}
+  <section class="section bg-midnight color-lake-light" id="moreinfo">
+    <div class="callout size-lg margin-auto mt-5 mb-14">
+      <div class="md:hidden">
+        <div class="resource__logo lined">
+          <img alt="global biorisk advisory council" src="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2020-21/mntw-nob4ugo/gbac_logo.png">
+        </div>
+      </div>
+      <div class="callout__image">
+        <img class="scale" alt="Mayo Clinic" src="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2020-21/mntw-nob4ugo/gbac_logo.png">
+      </div>
+      <div class="callout__text">
+        <h2 class="color-white callout__title">GLOBAL BIORISK ADVISORY COUNCIL (GBAC) STAR ACCREDITATION</h2>
+        <p class="callout__description">Target Center received a GBAC STAR Accreditation, which indicates the arena has:</p>
+        <ul class="text-base">
+          <li>• Established and maintained a cleaning, disinfection, and infectious disease prevention program to minimize risks associated with infectious agents like COVID-19</li>
+          <li>• Implemented proper cleaning protocols, disinfection techniques, and work practices to combat biohazards and infectious disease</li>
+          <li>• Highly-informed cleaning professionals trained for outbreak and infectious disease preparation and response</li>
+        </ul>
+      </div>
+    </div>
+    <div class="resource size-lg margin-auto">
+      <div class="resource__logo lined"><img alt="NBA" src="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2019-20/one-pack/nba-logo.43f04ac0.svg"></div>
+      <div class="text-center">
+        <h2 class="color-white">Disclaimer</h2>
+        <p>We have taken enhanced health and safety measures intended to mitigate the risk of exposure to COVID-19. Despite the protocols and requirements we have put in place, no precautions can eliminate the risk of exposure to COVID-19. Traveling to and from, visiting, and/or providing services in and around the arena may lead to a risk of exposure to COVID-19. COVID-19 is highly contagious and there is an inherent risk of exposure to COVID-19 in any place where people are present. COVID-19 can lead to severe illness and death. While people of all ages and health conditions have been adversely affected by COVID-19, certain people have been identified by public health authorities as having greater risk based on age and underlying medical conditions. Exposure to COVID-19 can result in being subject to quarantine requirements. Please do your part by complying with our health and safety rules and let's keep each other safe and healthy.</p>
+        <p>All information above is subject to change as applicable regulations from New York State, New York City, and the NBA (as well as CDC guidance) may be implemented.</p>
+        <p>–Updated as of Feb. 17, 2021–</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+{# <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script> #}
+<script src="https://polyfill.app/api/polyfill?features=scroll-behavior" crossorigin="crossorigin"></script>
+{# <script src="https://www.nba.com/resources/static/team/v2/timberwolves/projects/2019-20/one-pack/js.abf3d0ec.js"></script> #}
+<script type="text/javascript">
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  function nav() {
+    return{
+      atSection : '',
+      navitems : [
+        {
+          id : `gameday`,
+          title: `What to Expect`,
+        },
+        {
+          id : `mayo`,
+          title: `Mayo Clinic Guidelines`,
+        },
+        // {
+        //   id : `faq`,
+        //   title: `FAQ`,
+        // },
+        {
+          id : `moreinfo`,
+          title: `More Info`
+
+        },
+      ],
+      scroll: {
+        ['@scroll.window']() { 
+          this.atSection = 
+            document.querySelector('#moreinfo').getBoundingClientRect().top <= 100 ? 'moreinfo' 
+              : (document.querySelector('#mayo').getBoundingClientRect().top <= 100 ? 'mayo' 
+              : 'gameday')
+        },
+      },
+      smoothscroll(item, component) {
+        const toScroll = window.pageYOffset + document.querySelector(`#${item.id}`).getBoundingClientRect().top - component.offsetHeight;
+
+        window.scroll({
+          top: toScroll,
+          behavior: 'smooth'
+        });
+        
+        // console.log(`scrolling to ${item.id}`); 
+      }
+    }
+  }
+
+  function gameday() {
+    return{
+      modalQuery(query, items) {
+        let modal = items.filter(item => item.id === query);
+        console.log(modal);
+        return modal;
+      },
+      showModal : false,
+      modal : null,
+      gameday : [
+        {
+          title: `Seating`,
+          id: `seating`,
+          note: `Seats have been segmented into socially distanced pods of 2 or 4 seats each, allowing for 6 feet of distance between each group of seats. The entire pod must be purchased together and fans in the same pod of seats will need to enter the arena together.`,
+          cta: ``,
+          modal: false,
+          modalInfo: ``,
+          link: ``,
+          icon: `fas fa-chair`,
+        },
+        {
+          title: `Tickets`,
+          id: `tickets`,
+          note: `All tickets will be digitally delivered to the Timberwolves mobile app. <strong>Tickets are non-transferable.</strong> Therefore, the fan securing the tickets should also be planning to attend the game. Be sure to log in to your account in the Timberwolves mobile app to show the QR code which will be scanned for entry. All tickets in the seating pod must enter together. Ticket resale is currently not available.`,
+          cta: ``,
+          modal: false,
+          modalInfo: ``,
+          link: ``,
+          icon: `fa fa-ticket-alt`,
+        },
+        {
+          title: `NBA Ticket Terms`,
+          id: `terms`,
+          note: `Please read the following terms carefully as they govern your rights under the ticket and contain a binding, individual, arbitration and class action waiver provision by which you give up the right to file a lawsuit in court individually or as part of a class action with respect to any disputes relating to the ticket or the specified game or event for which it is issued.`,
+          cta: `Read the Full NBA Ticket Terms`,
+          modal: false,
+          modalInfo: ``,
+          link: `https://www.nba.com/timberwolves/ticket-terms`,
+          icon: `far fa-file-alt`,
+        },
+        {
+          title: `No Bag Policy`,
+          id: `bags`,
+          note: `Per NBA guidelines, Target Center has a no bag policy that prohibits purses, backpacks, large bags, clutches, camera cases and other similar bags from being carried into the arena. Permitted items include diaper bags and medical bags (subject to search upon entry).`,
+          cta: ``,
+          modal: false,
+          modalInfo: `Beginning this season, backpacks (regardless of size) are prohibited. As a reminder, luggage, roller bags, hard-sided bags/briefcases and bags are also prohibited.  Diaper bags (if the adult is accompanied by a small child) and medical bags will be permitted after being searched.`,
+          link: ``,
+          icon: `fa fa-ban`,
+        },
+        {
+          title: `Contactless Experience`,
+          id: `contactless`,
+          note: `All purchases at Target Center will be contactless through the Timberwolves mobile app. For the safety of fans and employees, cash will no longer be accepted. Fans can load their credit card into their Wolves Wallet inside the Timberwolves mobile app to complete any purchase. Court Cash may also be used for contactless purchases in the mobile app.`,
+          cta: ``,
+          modal: false,
+          modalInfo: `<p>How to load your credit card into your Wolves Wallet</p><ol><li>1. Download the Timberwolves App</li><li>2. Tap ARENA in the main navigation</li><li>3. Tap Wolves Wallet</li><li>4. Tap Add a Credit Card</li><li>5. Enter Credit Card Information</li></ol><p>To make payment with Wolves Wallet, Scan QR Code at point of sale</p>`,
+          link: ``,
+          icon: `fas fa-mobile-alt`,
+        },
+        {
+          title: `Food and Beverage`,
+          id: `concessions`,
+          note: `Fans never have to miss a moment of game action as they can now place their food and beverage order in the app from their seat. Once a ‘Ready’ message appears on their app, fans can pick-up their order at the designated concession location. The new mobile ordering experience will enhance fan safety by eliminating cash exchange and waiting in lines.`,
+          cta: ``,
+          modal: false,
+          modalInfo: `<p>How to Order</p><ol><li>1. Tap arena</li><li>2. Tap Food & Beverage</li></ol>`,
+          link: ``,
+          icon: `fas fa-hotdog`,
+        },
+        {
+          title: `Parking`,
+          id: `parking`,
+          note: `For quick access into Target Center and to avoid the use of elevators, fans can park on the third level of Ramp A and enter directly in the the skyway. Fans can also park at Mayo Clinic Square directly across the street from Target Center, connected via skyway. `,
+          cta: `Visit Ramp Map`,
+          modal: false,
+          modalInfo: ``,
+          link: `https://abc-ramps.com/map-directions/`,
+          icon: `fas fa-parking`,
+        },
+        {
+          title: `Mandatory Mask Policy`,
+          id: `masks`,
+          note: `Proper face masks are required at Target Center for all guests and staff ages 2 and up. Masks must completely cover the nose and mouth and must be worn at all times, unless actively eating or drinking. Bandanas, gaiters, vented face masks and face coverings with only a single layer of fabric are not permitted.`,
+          cta: `Learn More`,
+          modal: true,
+          modalInfo: `<ul><li>• Per the City of Minneapolis (and the State of Minnesota), mask/face covering are required in all indoor spaces.​</li><li>• Guests and staff at Target Center must wear a mask/face covering at all times while in the building.​</li><li>• One-time use masks are available if a guest needs one.</li><li>• A mask/face covering must cover the nose and mouth completely. The covering should not be overly tight or restrictive and should feel comfortable to wear.​</li><li>• Any mask that incorporates a valve that is designed to facilitate easy exhaling, mesh masks, or masks with openings, holes, visible gaps in the design or material, or vents are not sufficient face coverings because they allow droplets to be released from the mask.​</li><li>• A mask/face covering is not a substitute for social distancing, but it is especially important in situations when maintaining at least a 6-foot distance from other individuals is not possible.​</li><li>• A face covering/mask may only be temporarily removed while eating or drinking, if you can maintain at least 6 feet of physical distance from others.​</li><li>• Eating and drinking restricted exclusively to the fan’s seating pod.</li></ul>`,
+          link: ``,
+          icon: `fas fa-head-side-mask`,
+        },
+        {
+          title: `COVID-19 Health Screening`,
+          id: `screening`,
+          note: `All fans must review and verbally respond to the health-screening-survey questions prior to entering the game to verify that they are not potentially infectious.`,
+          cta: `View Health Screening Questions`,
+          modal: true,
+          modalInfo: `<p>How to complete survey</p><ol><li>1. Have you experienced any known symptoms of COVID-19 in the preceding 24-hours? Symptoms may include: cough, shortness of breath or difficulty breathing, fever or chills, muscle or body aches, headache, sore throat, new loss of taste or smell, diarrhea, nausea or vomiting, fatigue, congestion or runny nose.</li><li>2. Has anyone you live with or have been in contact with been diagnosed with COVID-19 in the preceding 24-48 hours?</li><li>3. Have you been contacted by a local public authority within the last 14 days due to having had close contact with an individual infected with COVID-19?</li><li>4. Have you been directed to quarantine by a physician or local public health authority?</li><li>5. Have you tested positive or been diagnosed with COVID-19 within the last 10 days and/or have not received clearance from a physician to discontinue isolation?</li></ol>`,
+          link: ``,
+          icon: `fas fa-stethoscope`,
+        },
+        {
+          title: `Door Times`,
+          id: `doortimes`,
+          note: `Doors will open to ticketed guests 60 minutes prior to game start. Guests should enter Target Center through the Main Skyway Level entrance or thru the South Skyway entrance near Ramp A.`,
+          cta: ``,
+          modal: false,
+          modalInfo: ``,
+          link: ``,
+          icon: `far fa-clock`,
+        },
+        {
+          title: `Physical Distancing`,
+          id: `distancing`,
+          note: `Social distancing of at least 6-feet must be maintained and will be enforced between all groups while at Target Center.</br></br>Fans should remain seated in their designated seat throughout the game, (unless entering or exiting, or briefly leaving the assigned seat to access restroom facilities or pick-up concessions.`,
+          cta: `Learn More`,
+          modal: true,
+          modalInfo: `<p>Standard physical distancing practices will be enforced upon entering and throughout the Arena.<p><ul><li>• All guests must stay six feet apart.</li><li>• Designated eating areas will be appropriately spaced.</li></ul>`,
+          link: ``,
+          icon: `fa fa-people-arrows`,
+        },
+        {
+          title: `Enhanced Cleaning`,
+          id: `cleaning`,
+          note: `Enhanced cleaning and disinfecting procedures have been implemented to reduce the risk of transmission of COVID-19. These procedures have been informed by the NBA, current CDC guidance, global industry best practices, and industry experts.`,
+          cta: `Learn More`,
+          modal: true,
+          modalInfo: `<ul><li>• All arena surfaces are cleaned routinely to meet the CDC’s minimum guidance for COVID-19.</li><li>• After surfaces are cleaned, they are disinfected according to the frequency of their use.</li><li>• Hydroalcoholic gel touchless hand sanitizer dispensers have been  placed at all screening and entrance points, as well as in high-touch and high-traffic areas.</li></ul>`,
+          link: ``,
+          icon: `fas fa-hand-sparkles`,
+        },
+        {
+          title: `Sanitization Stations`,
+          id: `sanitization`,
+          note: `Hydroalcoholic gel touchless hand sanitizer dispensers have been placed throughout Target Center including screening and entrance points, as well as in high-touch and high-traffic areas.`,
+          cta: ``,
+          modal: false,
+          modalInfo: ``,
+          link: ``,
+          icon: `fas fa-hands-wash`,
+        },
+        {
+          title: `Refund Policy`,
+          id: `refund`,
+          note: `<p>If you have recently been exposed to COVID-19, are feeling sick or have any common symptoms of COVID-19, please consider the safety of others and stay home. Tickets will be refunded for cancellation due to illness or potential illness. Please email your name, seat location, game date and order information to <a class="text-lake-light hover:text-white" href="mailto:tickets@timberwolves.com">tickets@timberwolves.com</a> to secure a refund.  </p>`,
+          cta: ``,
+          modal: false,
+          modalInfo: ``,
+          link: ``,
+          icon: `fas fa-house-user`,
+        }
+      ]
+    }
+  }
+
+  // function faq() {
+  //   return{
+  //     faqs: [
+  //       {
+  //         question: 'When will tickets be available and who can purchase?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores iure quas laudantium dicta impedit, est id delectus molestiae deleniti enim nobis rem et nihil.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Are ADA seats available?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Where do I find my tickets inside of the Timberwolves app?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'What if I don’t have a smart phone, how can I enter the arena or purchase concessions?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Will I be able to exchange, transfer, donate or resell my tickets if i am unable to attend?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'What happens if a game is postponed?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'What is the mask policy? Are there exceptions?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'What type of face masks are permitted?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'What if I get sick prior to the game?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'How do my guests complete the COVID-19 Screening if they don’t have the Timberwolves app?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'How do I report concern regarding guest conduct?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Will I be able to leave my seat and walk around the arena?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Will food and beverage be available for purchase?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Where should I each my concession purchases? Can I eat or drink in my seat?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'How do I place my concession order?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'Will team store be open?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //       {
+  //         question: 'What if i have more questions?',
+  //         answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi cumque, nulla harum aspernatur veniam ullam provident neque temporibus autem itaque odit.',
+  //         isOpen: false,
+  //       },
+  //     ]
+  //   }
+  // }
+</script>
+{% endblock %}

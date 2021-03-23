@@ -1,0 +1,131 @@
+<style type="text/css">
+@tailwind components;
+@layer components {
+  .checklist{
+    @apply bg-white shadow-md rounded px-6 py-4 w-full;
+    box-shadow: 6px 6px #0a2240, 6px 6px 15px rgb(35 96 146 / 20%);
+  }
+  .checklist__title{
+    @apply pt-1 pb-2 text-2xl font-bold border-b border-gray-200 mx-1 mb-1;
+  }
+  .checklist__item{
+    @apply text-xl md:text-2xl lg:text-lg flex items-center justify-between mt-3 cursor-pointer order-1 transition-all transform hover:translate-x-1.5;
+  }
+
+  .checklist__item input{
+    @apply transform scale-150;
+  }
+
+  .checklist__item .checklist__text{
+    @apply ml-3 transition-colors duration-300;
+  }
+}
+</style>
+<section class="section bg-lake" id="checklists">
+    <div class="size-lg margin-auto">
+      <div class="text-center">
+        <h2 class="text-white">Checklists</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div class="pregame checklist" x-data="checklist()">
+          <h3 class="checklist__title no-margin">Pregame</h3>
+          <ul class="flex flex-col mb-6">
+            <template x-for="item in pregame" :key="item.title">
+              <li 
+                class="checklist__item"
+                @click="item.isComplete = !item.isComplete">
+                <div class="flex items-center" :class="{ 'line-through' : item.isComplete }">
+                  <input label="checkbox" type="checkbox" x-model="item.isComplete">
+                  <div
+                    class="checklist__text"
+                    :class="{ 'text-gray-400' : item.isComplete}"
+                    x-text="item.title"></div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+        <div class="atgame checklist" x-data="checklist()">
+          <h3 class="checklist__title no-margin">At Game</h3>
+          <ul class="flex flex-col mb-6">
+            <template x-for="item in atgame" :key="item.title">
+              <li 
+                class="checklist__item"
+                @click="item.isComplete = !item.isComplete">
+                <div class="flex items-center" :class="{ 'line-through' : item.isComplete }">
+                  <input label="checkbox" type="checkbox" x-model="item.isComplete">
+                  <div
+                    class="checklist__text"
+                    :class="{ 'text-gray-400' : item.isComplete}"
+                    x-text="item.title"></div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="text/javascript">
+function checklist() {
+    return{
+      pregame : [
+          {
+            title: `Stay home if you're sick`,
+            isComplete: false,
+          },
+          {
+            title: `Complete your health survey`,
+            isComplete: false,
+          },
+          {
+            title: `Load your mobile tickets onto your Timberwolves App`,
+            isComplete: false,
+          },
+          {
+            title: `Load your credit card into your Timberwolves Mobile Wallet`,
+            isComplete: false,
+          },
+          {
+            title: `Know your parking options`,
+            isComplete: false,
+          },
+          {
+            title: `Grab your mask`,
+            isComplete: false,
+          },
+          {
+            title: `Leave bags at home`,
+            isComplete: false,
+          },
+          {
+            title: `Arrive early - doors open 60 minutes prior to tip-off`,
+            isComplete: false,
+        },
+      ],
+      atgame : [
+        {
+          title: `Wear your face mask properly`,
+          isComplete: false,
+        },
+        {
+          title: `Remain seated`,
+          isComplete: false,
+        },
+        {
+          title: `Maintain physical distancing`,
+          isComplete: false,
+        },
+        {
+          title: `No congregating`,
+          isComplete: false,
+        },
+        {
+          title: `In-Seat contactless mobile ordering food & beverage and merchandise`,
+          isComplete: false,
+        },
+      ],
+    }
+  }
+</script>
