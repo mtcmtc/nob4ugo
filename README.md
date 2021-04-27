@@ -1,4 +1,4 @@
-##Know Before You Go
+# Know Before You Go
 
 An reactive info page pulling in dynamic data built with [Eleventy](https://www.11ty.dev), [Tailwind CSS](https://tailwindcss.com), and [Alpine.js](https://github.com/alpinejs/alpine).
 
@@ -42,4 +42,4 @@ npm run build
 npm run start
 ```
 
-# built with 11ty boilerplate eleventy-tailwindcss-alpinejs-starter by [Greg Wolanski](https://gregwolanski.com)
+### built with 11ty boilerplate eleventy-tailwindcss-alpinejs-starter by [Greg Wolanski](https://gregwolanski.com)
