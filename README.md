@@ -1,21 +1,19 @@
-# eleventy-tailwindcss-alpinejs-starter by [Greg Wolanski](https://gregwolanski.com)
+##Know Before You Go
 
-A starter repository showing how to build a website with the [Eleventy](https://www.11ty.dev), [Tailwind CSS](https://tailwindcss.com), and [Alpine.js](https://github.com/alpinejs/alpine).
-
-Learn more on CSS-Tricks: [An Eleventy Starter with Tailwind CSS and Alpine.js](https://css-tricks.com/eleventy-starter-with-tailwind-css-alpine-js/)
+An reactive info page pulling in dynamic data built with [Eleventy](https://www.11ty.dev), [Tailwind CSS](https://tailwindcss.com), and [Alpine.js](https://github.com/alpinejs/alpine).
 
 ## Getting Started
 
 ### 1. Clone this repository
 
 ```
-git clone https://github.com/gregwolanski/eleventy-tailwindcss-alpinejs-starter.git my-website-name
+git clone https://github.com/mtcmtc/nob4ugo
 ```
 
 ### 2. Navigate to the directory
 
 ```
-cd my-website-name
+cd nob4ugo
 ```
 
 ### 3. Install the dependencies
@@ -44,16 +42,4 @@ npm run build
 npm run start
 ```
 
-## Author
-
-[Greg Wolanski](https://gregwolanski.com)
-
-## Troubleshooting
-
-[Windows](https://github.com/gregwolanski/eleventy-tailwindcss-alpinejs-starter/issues/3)
-
-## License
-
-MIT
-
-See `LICENSE` for more information.
+# built with 11ty boilerplate eleventy-tailwindcss-alpinejs-starter by [Greg Wolanski](https://gregwolanski.com)
